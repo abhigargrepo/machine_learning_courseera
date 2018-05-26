@@ -58,13 +58,14 @@ pause;
 [m, n] = size(X);
 
 % Add intercept term to x and X_test
-X = [ones(m, 1) X];
+X = [ones(m, 1) X X(:,1).^2 X(:,2).^2];
 
 % Initialize fitting parameters
-initial_theta = zeros(n + 1, 1);
+initial_theta = zeros(n + 3, 1);
 
 % Compute and display initial cost and gradient
 [cost, grad] = costFunction(initial_theta, X, y);
+
 
 fprintf('Cost at initial theta (zeros): %f\n', cost);
 fprintf('Expected cost (approx): 0.693\n');
@@ -73,7 +74,7 @@ fprintf(' %f \n', grad);
 fprintf('Expected gradients (approx):\n -0.1000\n -12.0092\n -11.2628\n');
 
 % Compute and display cost and gradient with non-zero theta
-test_theta = [-24; 0.2; 0.2];
+test_theta = [-24; 0.2; 0.2;0;0];
 [cost, grad] = costFunction(test_theta, X, y);
 
 fprintf('\nCost at test theta: %f\n', cost);
