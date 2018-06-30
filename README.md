@@ -1,1 +1,1 @@
-# machinelearning_courseera
+# machine_learning_courseera
